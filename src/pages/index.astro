@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Historia from '../components/Historia.astro';
+import Sabores from '../components/Sabores.astro';
+import Ubicacion from '../components/Ubicacion.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+  <main>
+    <Hero />
+    <Historia />
+    <Sabores />
+    <Ubicacion />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { initAllAnimations } from '../scripts/animations';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure everything is painted
+    requestAnimationFrame(() => {
+      initAllAnimations();
+    });
+  });
+</script>

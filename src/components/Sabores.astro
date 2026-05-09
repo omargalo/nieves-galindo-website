@@ -1,0 +1,715 @@
+---
+import tunaImg from '../assets/img/flavors/tuna.webp';
+import cocoImg from '../assets/img/flavors/coco.webp';
+import lecheImg from '../assets/img/flavors/leche-quemada.webp';
+import quesoImg from '../assets/img/flavors/queso.webp';
+import melonImg from '../assets/img/flavors/melon.webp';
+import chocolateImg from '../assets/img/flavors/chocolate.webp';
+import maracuyaImg from '../assets/img/flavors/maracuya.webp';
+import vainillaImg from '../assets/img/flavors/vainilla.webp';
+import nuezImg from '../assets/img/flavors/nuez.webp';
+import limonImg from '../assets/img/flavors/limon.webp';
+
+const flavors = [
+  {
+    id: 'tuna',
+    nameEs: 'Tuna',
+    nameEn: 'Prickly Pear',
+    descEs: 'Fruta silvestre de las montañas de Miahuatlán.',
+    descEn: 'Wild fruit from the mountains of Miahuatlán.',
+    originEs: 'Miahuatlán',
+    originEn: 'Miahuatlán',
+    img: tunaImg.src
+  },
+  {
+    id: 'coco',
+    nameEs: 'Coco',
+    nameEn: 'Coconut',
+    descEs: 'Coco fresco de la costa de Zicatela.',
+    descEn: 'Fresh coconut from the coast of Zicatela.',
+    originEs: 'Zicatela',
+    originEn: 'Zicatela',
+    img: cocoImg.src
+  },
+  {
+    id: 'leche-quemada',
+    nameEs: 'Leche Quemada',
+    nameEn: 'Burnt Milk',
+    descEs: 'Receta tradicional de los Valles Centrales.',
+    descEn: 'Traditional recipe from the Central Valleys.',
+    originEs: 'Valles Centrales',
+    originEn: 'Central Valleys',
+    img: lecheImg.src
+  },
+  {
+    id: 'queso',
+    nameEs: 'Queso con Zarzamora',
+    nameEn: 'Cheese & Blackberry',
+    descEs: 'Queso artesanal con zarzamoras de la Sierra Sur.',
+    descEn: 'Artisan cheese with blackberries from the Sierra Sur.',
+    originEs: 'Sierra Sur',
+    originEn: 'Sierra Sur',
+    img: quesoImg.src
+  },
+  {
+    id: 'melon',
+    nameEs: 'Melón',
+    nameEn: 'Melon',
+    descEs: 'Melón dulce de la Costa Chica.',
+    descEn: 'Sweet melon from the Costa Chica.',
+    originEs: 'Costa Chica',
+    originEn: 'Costa Chica',
+    img: melonImg.src
+  },
+  {
+    id: 'chocolate',
+    nameEs: 'Chocolate',
+    nameEn: 'Chocolate',
+    descEs: 'Cacao fino de la región oaxaqueña.',
+    descEn: 'Fine cacao from the Oaxacan region.',
+    originEs: 'Oaxaca',
+    originEn: 'Oaxaca',
+    img: chocolateImg.src
+  },
+  {
+    id: 'maracuya',
+    nameEs: 'Maracuyá',
+    nameEn: 'Passion Fruit',
+    descEs: 'Maracuyá tropical de la costa del Pacífico.',
+    descEn: 'Tropical passion fruit from the Pacific coast.',
+    originEs: 'Costa del Pacífico',
+    originEn: 'Pacific Coast',
+    img: maracuyaImg.src
+  },
+  {
+    id: 'vainilla',
+    nameEs: 'Vainilla',
+    nameEn: 'Vanilla',
+    descEs: 'Vainilla natural con un toque artesanal.',
+    descEn: 'Natural vanilla with an artisanal touch.',
+    originEs: 'Oaxaca',
+    originEn: 'Oaxaca',
+    img: vainillaImg.src
+  },
+  {
+    id: 'nuez',
+    nameEs: 'Nuez',
+    nameEn: 'Pecan',
+    descEs: 'Nuez tostada con un sabor profundo y cremoso.',
+    descEn: 'Toasted pecan with a deep, creamy flavor.',
+    originEs: 'Oaxaca',
+    originEn: 'Oaxaca',
+    img: nuezImg.src
+  },
+  {
+    id: 'limon',
+    nameEs: 'Limón',
+    nameEn: 'Lime',
+    descEs: 'Limón fresco y refrescante de la costa.',
+    descEn: 'Fresh and refreshing lime from the coast.',
+    originEs: 'Costa',
+    originEn: 'Coast',
+    img: limonImg.src
+  }
+];
+---
+
+<section class="sabores section" id="sabores">
+  <div class="sabores-bg">
+    <div class="sabores-orb sabores-orb--1"></div>
+    <div class="sabores-orb sabores-orb--2"></div>
+  </div>
+
+  <div class="section-inner">
+    <h2 class="section-title" data-reveal>
+      <span data-es="Nuestros" data-en="Our">Nuestros</span>
+      <span class="accent" data-es="Sabores" data-en="Flavors"> Sabores</span>
+    </h2>
+    <p class="section-subtitle" data-reveal
+       data-es="Cada nieve es preparada con ingredientes frescos de diferentes regiones de Oaxaca."
+       data-en="Each ice cream is made with fresh ingredients from different regions of Oaxaca.">
+      Cada nieve es preparada con ingredientes frescos de diferentes regiones de Oaxaca.
+    </p>
+
+    <!-- Carousel -->
+    <div class="carousel" id="flavors-carousel" data-reveal>
+      <!-- Track -->
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          {flavors.map((flavor, i) => (
+            <div
+              class="carousel-slide"
+              data-index={i}
+            >
+              <div class="slide-card">
+                <div class="slide-card-glow"></div>
+                <div class="slide-img-wrap">
+                  <img
+                    src={flavor.img}
+                    alt={flavor.nameEs}
+                    class="slide-img"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    width="600"
+                    height="400"
+                  />
+                  <div class="slide-img-overlay"></div>
+                  <span class="slide-origin" data-es={flavor.originEs} data-en={flavor.originEn}>
+                    {flavor.originEs}
+                  </span>
+                </div>
+                <div class="slide-info">
+                  <span class="slide-counter">{String(i + 1).padStart(2, '0')} / {String(flavors.length).padStart(2, '0')}</span>
+                  <h3 data-es={flavor.nameEs} data-en={flavor.nameEn}>{flavor.nameEs}</h3>
+                  <p data-es={flavor.descEs} data-en={flavor.descEn}>{flavor.descEs}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="carousel-btn carousel-btn--prev" id="carousel-prev" aria-label="Previous flavor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="carousel-btn carousel-btn--next" id="carousel-next" aria-label="Next flavor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 6 15 12 9 18"></polyline>
+        </svg>
+      </button>
+
+      <!-- Dot Indicators -->
+      <div class="carousel-dots" id="carousel-dots">
+        {flavors.map((_, i) => (
+          <button
+            class={`carousel-dot ${i === 0 ? 'active' : ''}`}
+            data-dot={i}
+            aria-label={`Go to flavor ${i + 1}`}
+          ></button>
+        ))}
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="carousel-progress">
+        <div class="carousel-progress-bar" id="carousel-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sabores {
+    background: linear-gradient(180deg, var(--bg-section-alt) 0%, var(--bg-warm) 50%, var(--bg-primary) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sabores-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sabores-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+  }
+
+  .sabores-orb--1 {
+    width: 350px;
+    height: 350px;
+    background: rgba(255, 0, 255, 0.05);
+    top: 10%;
+    left: -100px;
+    animation: pulse-glow 10s ease-in-out infinite;
+  }
+
+  .sabores-orb--2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(157, 249, 255, 0.07);
+    bottom: 5%;
+    right: -80px;
+    animation: pulse-glow 10s ease-in-out infinite 5s;
+  }
+
+  .sabores .section-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ========== CAROUSEL ========== */
+  .carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    user-select: none;
+  }
+
+  .carousel-viewport {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+  }
+
+  .carousel-track {
+    display: flex;
+    will-change: transform;
+  }
+
+  /* ========== SLIDE ========== */
+  .carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    padding: 0 4px;
+  }
+
+  .slide-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    box-shadow:
+      0 8px 32px rgba(157, 249, 255, 0.1),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.5s var(--ease-smooth),
+                border-color 0.5s ease;
+  }
+
+  .slide-card:hover {
+    box-shadow:
+      0 20px 60px rgba(157, 249, 255, 0.18),
+      0 0 50px rgba(255, 0, 255, 0.08),
+      0 8px 30px rgba(0, 0, 0, 0.06);
+    border-color: rgba(255, 0, 255, 0.18);
+  }
+
+  /* Card glow ring */
+  .slide-card-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--magenta-glow), transparent 40%, var(--cyan-glow));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .slide-card:hover .slide-card-glow {
+    opacity: 1;
+  }
+
+  /* ========== IMAGE ========== */
+  .slide-img-wrap {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .slide-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease-smooth);
+  }
+
+  .slide-card:hover .slide-img {
+    transform: scale(1.05);
+  }
+
+  .slide-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(26, 26, 46, 0.03) 100%
+    );
+    pointer-events: none;
+  }
+
+  .slide-origin {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, var(--magenta), #CC00CC);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 1rem;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px var(--magenta-glow);
+    z-index: 2;
+  }
+
+  /* ========== INFO ========== */
+  .slide-info {
+    position: relative;
+    z-index: 1;
+    padding: 1.8rem 2rem 2rem;
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .slide-counter {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+  }
+
+  .slide-info h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .slide-info p {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 550px;
+  }
+
+  /* ========== NAVIGATION BUTTONS ========== */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-smooth);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .carousel-btn:hover {
+    background: var(--magenta);
+    color: white;
+    box-shadow: 0 8px 30px var(--magenta-glow);
+    transform: translateY(-50%) scale(1.1);
+    border-color: transparent;
+  }
+
+  .carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .carousel-btn--prev {
+    left: -26px;
+  }
+
+  .carousel-btn--next {
+    right: -26px;
+  }
+
+  /* ========== DOT INDICATORS ========== */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.8rem;
+  }
+
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(26, 26, 46, 0.15);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-smooth);
+    position: relative;
+  }
+
+  .carousel-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color 0.4s ease;
+  }
+
+  .carousel-dot.active {
+    background: linear-gradient(135deg, var(--magenta), #CC00CC);
+    width: 28px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px var(--magenta-glow);
+  }
+
+  .carousel-dot:hover:not(.active) {
+    background: rgba(255, 0, 255, 0.3);
+    transform: scale(1.2);
+  }
+
+  /* ========== PROGRESS BAR ========== */
+  .carousel-progress {
+    width: 100%;
+    height: 3px;
+    background: rgba(26, 26, 46, 0.06);
+    border-radius: 3px;
+    margin-top: 1.2rem;
+    overflow: hidden;
+  }
+
+  .carousel-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--magenta), var(--cyan));
+    border-radius: 3px;
+    transition: width 0.1s linear;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 860px) {
+    .carousel-btn--prev {
+      left: 8px;
+    }
+    .carousel-btn--next {
+      right: 8px;
+    }
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .carousel {
+      max-width: 100%;
+    }
+
+    .slide-img {
+      height: 240px;
+    }
+
+    .slide-info {
+      padding: 1.3rem 1.4rem 1.5rem;
+    }
+
+    .slide-info h3 {
+      font-size: 1.3rem;
+    }
+
+    .carousel-btn {
+      width: 38px;
+      height: 38px;
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .carousel-dots {
+      gap: 8px;
+      margin-top: 1.2rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  function initCarousel() {
+    const carousel = document.getElementById('flavors-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track') as HTMLElement;
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const progressBar = document.getElementById('carousel-progress-bar');
+
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoPlayTimer: ReturnType<typeof setInterval> | null = null;
+    let progressTimer: ReturnType<typeof setInterval> | null = null;
+    const autoPlayDelay = 5000; // 5 seconds
+    let progressElapsed = 0;
+
+    // ---- Go to specific slide ----
+    function goToSlide(index: number, direction: 'next' | 'prev' = 'next') {
+      if (isAnimating || index === currentIndex) return;
+      isAnimating = true;
+
+      const targetIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+
+      // Animate track slide
+      gsap.to(track, {
+        x: `-${targetIndex * 100}%`,
+        duration: 0.7,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          currentIndex = targetIndex;
+          isAnimating = false;
+        }
+      });
+
+      // Animate slide content entrance
+      const targetSlide = slides[targetIndex];
+      const img = targetSlide.querySelector('.slide-img') as HTMLElement;
+      const info = targetSlide.querySelector('.slide-info') as HTMLElement;
+      const origin = targetSlide.querySelector('.slide-origin') as HTMLElement;
+
+      if (img) {
+        gsap.fromTo(img,
+          { scale: 1.15, opacity: 0.7 },
+          { scale: 1, opacity: 1, duration: 0.9, ease: 'power2.out', delay: 0.15 }
+        );
+      }
+
+      if (info) {
+        gsap.fromTo(info,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.3 }
+        );
+      }
+
+      if (origin) {
+        gsap.fromTo(origin,
+          { x: 20, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, ease: 'back.out(1.7)', delay: 0.4 }
+        );
+      }
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === targetIndex);
+      });
+
+      currentIndex = targetIndex;
+      resetProgress();
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1, 'next');
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1, 'prev');
+    }
+
+    // ---- Progress bar auto-play ----
+    function resetProgress() {
+      progressElapsed = 0;
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      progressElapsed = 0;
+
+      progressTimer = setInterval(() => {
+        progressElapsed += 50;
+        const pct = Math.min((progressElapsed / autoPlayDelay) * 100, 100);
+        if (progressBar) progressBar.style.width = `${pct}%`;
+      }, 50);
+
+      autoPlayTimer = setInterval(() => {
+        nextSlide();
+      }, autoPlayDelay);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+      if (progressTimer) clearInterval(progressTimer);
+      autoPlayTimer = null;
+      progressTimer = null;
+    }
+
+    // ---- Event listeners ----
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      startAutoPlay();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      startAutoPlay();
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = Number((dot as HTMLElement).dataset.dot);
+        const dir = index > currentIndex ? 'next' : 'prev';
+        goToSlide(index, dir);
+        startAutoPlay();
+      });
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+
+    // ---- Touch / swipe support ----
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', (e: TouchEvent) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e: TouchEvent) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+      startAutoPlay();
+    }, { passive: true });
+
+    // ---- Keyboard navigation ----
+    carousel.setAttribute('tabindex', '0');
+    carousel.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') { prevSlide(); startAutoPlay(); }
+      if (e.key === 'ArrowRight') { nextSlide(); startAutoPlay(); }
+    });
+
+    // ---- Initialize ----
+    // Set initial track position
+    gsap.set(track, { x: '0%' });
+
+    // Start auto-play
+    startAutoPlay();
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+</script>

@@ -1,0 +1,235 @@
+---
+import logoImg from '../assets/img/logo.png';
+import footerBg from '../assets/img/footer.webp';
+---
+
+<footer class="main-footer" id="footer" style={`--footer-bg: url(${footerBg.src})`}>
+  <div class="footer-overlay"></div>
+
+  <!-- Sparkle particles in footer -->
+  <div class="footer-sparkles" id="footer-sparkles"></div>
+
+  <div class="footer-content">
+    <img src={logoImg.src} alt="Nieves Galindo" class="footer-logo" width="90" height="90" />
+
+    <div class="footer-socials">
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        class="social-link"
+        id="social-instagram"
+      >
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a
+        href="https://www.facebook.com/nieves.galindo.9"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        class="social-link"
+        id="social-facebook"
+      >
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a
+        href="https://wa.me/529541102817"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        class="social-link"
+        id="social-whatsapp"
+      >
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <p class="footer-copy">
+      © 2026 Nieves Galindo, Puerto Escondido, Oaxaca.
+    </p>
+    <p class="footer-made">
+      <span data-es="Hecho con" data-en="Made with">Hecho con</span>
+      <span class="footer-heart">💜</span>
+      <span data-es="en Puerto Escondido" data-en="in Puerto Escondido">en Puerto Escondido</span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .main-footer {
+    position: relative;
+    background:
+      var(--footer-bg) center/cover no-repeat;
+    padding: 4rem 5% 2rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .footer-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(26, 26, 46, 0.85) 0%,
+        rgba(15, 15, 35, 0.92) 100%
+      );
+    z-index: 0;
+  }
+
+  .footer-sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .footer-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .footer-logo {
+    height: 85px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s var(--ease-spring);
+    filter: brightness(1.1);
+  }
+
+  .footer-logo:hover {
+    transform: scale(1.15) rotate(-3deg);
+  }
+
+  /* Social Links */
+  .footer-socials {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s var(--ease-spring);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .social-link:hover {
+    background: linear-gradient(135deg, var(--magenta), var(--cyan));
+    border-color: transparent;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow:
+      0 8px 30px var(--magenta-glow),
+      0 0 15px var(--cyan-glow);
+  }
+
+  .social-link i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Divider */
+  .footer-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--magenta), var(--cyan));
+    border-radius: 2px;
+    margin: 0.5rem 0;
+    opacity: 0.6;
+  }
+
+  /* Footer text */
+  .footer-copy {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+  }
+
+  .footer-made {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .footer-heart {
+    display: inline-block;
+    animation: bounce-gentle 2s ease-in-out infinite;
+    margin: 0 0.2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .main-footer {
+      padding: 3rem 5% 1.5rem;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  // Footer sparkle particles
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('footer-sparkles');
+    if (!container) return;
+
+    for (let i = 0; i < 12; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 3 + 1.5}px;
+        height: ${Math.random() * 3 + 1.5}px;
+        border-radius: 50%;
+        background: ${Math.random() > 0.5 ? 'var(--magenta)' : 'var(--cyan)'};
+        box-shadow: 0 0 ${Math.random() * 6 + 3}px ${Math.random() > 0.5 ? 'var(--magenta-glow)' : 'var(--cyan-glow)'};
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        opacity: 0;
+      `;
+      container.appendChild(sparkle);
+
+      gsap.to(sparkle, {
+        opacity: Math.random() * 0.5 + 0.15,
+        duration: Math.random() * 2.5 + 1.5,
+        repeat: -1,
+        yoyo: true,
+        delay: Math.random() * 4,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to(sparkle, {
+        y: `${Math.random() * -40 - 10}`,
+        x: `${Math.random() * 30 - 15}`,
+        duration: Math.random() * 5 + 3,
+        repeat: -1,
+        yoyo: true,
+        delay: Math.random() * 4,
+        ease: 'sine.inOut'
+      });
+    }
+  });
+</script>
